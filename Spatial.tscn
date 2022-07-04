@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://grass-triangle.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://grass-diffuse.png" type="Texture" id=2]
+[ext_resource path="res://grass-spatial.gdshader" type="Shader" id=3]
+[ext_resource path="res://grass-particle.gdshader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 3 )
+shader_param/alpha_scissor_threshold = 0.5
+shader_param/texture_albedo = ExtResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 4 )
+shader_param/rows = 70
+shader_param/spacing = 1.075
+shader_param/rotation_randomness = 1.0
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Particles" type="Particles" parent="."]
+material_override = SubResource( 6 )
+cast_shadow = 0
+amount = 1000000
+process_material = SubResource( 8 )
+draw_pass_1 = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.66582 )
