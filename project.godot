@@ -13,7 +13,3 @@ config_version=4
 config/name="Grass-shader"
 run/main_scene="res://Spatial.tscn"
 config/icon="res://grass-diffuse.png"
-
-[physics]
-
-common/enable_pause_aware_picking=true
